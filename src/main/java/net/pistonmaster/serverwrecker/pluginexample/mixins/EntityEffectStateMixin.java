@@ -33,14 +33,12 @@ import java.util.Optional;
 
 @Mixin(EntityEffectState.class)
 public class EntityEffectStateMixin {
-    @Inject(method = "getEffect", at = @At(value = "RETURN"), cancellable = true)
-    private static void returnJumpBoost(Effect effect, CallbackInfoReturnable<Optional<EffectData>> cir) {
+    @Inject(method = "getEffect", at = @At(value = "HEAD"), cancellable = true)
+    private void returnJumpBoost(Effect effect, CallbackInfoReturnable<Optional<EffectData>> cir) {
         var botConnection = ExecutorManager.BOT_CONNECTION_THREAD_LOCAL.get();
-        if (botConnection == null) {
-            return;
-        }
-
-        if (effect == Effect.JUMP_BOOST && botConnection.settingsHolder().get(ExampleServerExtension.HackJumpBoostSettings.HACK_JUMP_BOOST)) {
+        if (botConnection != null
+            && effect == Effect.JUMP_BOOST
+            && botConnection.settingsHolder().get(ExampleServerExtension.HackJumpBoostSettings.HACK_JUMP_BOOST)) {
             cir.setReturnValue(Optional.of(new EffectData(
                 effect,
                 botConnection.settingsHolder().get(ExampleServerExtension.HackJumpBoostSettings.JUMP_BOOST_LEVEL),

@@ -28,6 +28,6 @@ import java.util.Set;
 public class ExampleMixinExtension implements MixinExtension {
     @Override
     public Set<String> getMixinPaths() {
-        return Set.of("net.pistonmaster.serverwrecker.pluginexample.mixins");
+        return Set.of("net.pistonmaster.serverwrecker.pluginexample.mixins.*");
     }
 }
