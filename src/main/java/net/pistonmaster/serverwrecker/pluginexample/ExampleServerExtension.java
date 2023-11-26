@@ -70,7 +70,7 @@ public class ExampleServerExtension implements ServerExtension {
             "Jump Boost Level",
             "Jump Boost Level",
             new String[]{"--jump-boost-level"},
-            5,
+            2,
             0,
             255,
             1
