@@ -11,6 +11,8 @@ description = "Example of how to make a plugin for ServerWrecker."
 dependencies {
     // To use the ServerWrecker API
     compileOnly(libs.serverwrecker.api)
+
+    // To get pf4j to find all available extensions
     annotationProcessor(libs.pf4j)
 
     // For code generation
