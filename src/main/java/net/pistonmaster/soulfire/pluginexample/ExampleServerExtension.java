@@ -1,7 +1,7 @@
 /*
- * ServerWrecker
+ * SoulFire
  *
- * Copyright (C) 2023 ServerWrecker
+ * Copyright (C) 2023 SoulFire
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -17,21 +17,17 @@
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
-package net.pistonmaster.serverwrecker.pluginexample;
+package net.pistonmaster.soulfire.pluginexample;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.lenni0451.lambdaevents.EventHandler;
-import net.pistonmaster.serverwrecker.api.PluginHelper;
-import net.pistonmaster.serverwrecker.api.ServerExtension;
-import net.pistonmaster.serverwrecker.api.ServerWreckerAPI;
-import net.pistonmaster.serverwrecker.api.event.bot.BotJoinedEvent;
-import net.pistonmaster.serverwrecker.api.event.lifecycle.SettingsRegistryInitEvent;
-import net.pistonmaster.serverwrecker.plugins.AutoEat;
-import net.pistonmaster.serverwrecker.settings.lib.SettingsObject;
-import net.pistonmaster.serverwrecker.settings.lib.property.BooleanProperty;
-import net.pistonmaster.serverwrecker.settings.lib.property.IntProperty;
-import net.pistonmaster.serverwrecker.settings.lib.property.Property;
+import net.pistonmaster.soulfire.server.api.ServerExtension;
+import net.pistonmaster.soulfire.server.api.event.lifecycle.SettingsRegistryInitEvent;
+import net.pistonmaster.soulfire.server.settings.lib.SettingsObject;
+import net.pistonmaster.soulfire.server.settings.lib.property.BooleanProperty;
+import net.pistonmaster.soulfire.server.settings.lib.property.IntProperty;
+import net.pistonmaster.soulfire.server.settings.lib.property.Property;
 import org.pf4j.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +45,7 @@ public class ExampleServerExtension implements ServerExtension {
     public void onLoad() {
         LOGGER.info("Plugin is loading!");
 
-        ServerWreckerAPI.registerListeners(ExampleServerExtension.class);
+        SoulFireAPI.registerListeners(ExampleServerExtension.class);
 
         LOGGER.info("Plugin is loaded!");
         LOGGER.info("Type \"jump\" to see the hacked jump boost!");
@@ -61,15 +57,15 @@ public class ExampleServerExtension implements ServerExtension {
         public static final BooleanProperty HACK_JUMP_BOOST = BUILDER.ofBoolean(
             "hack-jump-boost",
             "Hack Jump Boost?",
-            "Hack Jump Boost?",
             new String[]{"--hack-jump-boost"},
+            "Hack Jump Boost?",
             true
         );
         public static final IntProperty JUMP_BOOST_LEVEL = BUILDER.ofInt(
             "jump-boost-level",
             "Jump Boost Level",
-            "Jump Boost Level",
             new String[]{"--jump-boost-level"},
+            "Jump Boost Level",
             2,
             0,
             255,

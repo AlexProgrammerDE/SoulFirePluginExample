@@ -54,6 +54,4 @@ dependencyResolutionManagement {
     }
 }
 
-include("build-data")
-
-rootProject.name = "serverwrecker-plugin-example"
+rootProject.name = "soulfire-plugin-example"

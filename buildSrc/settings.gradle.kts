@@ -1,1 +1,1 @@
-rootProject.name = "serverwrecker-plugin-example-buildsrc"
+rootProject.name = "soulfire-plugin-example-buildsrc"

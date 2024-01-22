@@ -1,7 +1,7 @@
 /*
- * ServerWrecker
+ * SoulFire
  *
- * Copyright (C) 2023 ServerWrecker
+ * Copyright (C) 2023 SoulFire
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -17,13 +17,13 @@
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
-package net.pistonmaster.serverwrecker.pluginexample.mixins;
+package net.pistonmaster.soulfire.pluginexample.mixins;
 
 import com.github.steveice10.mc.protocol.data.game.entity.Effect;
-import net.pistonmaster.serverwrecker.pluginexample.ExampleServerExtension;
-import net.pistonmaster.serverwrecker.protocol.ExecutorManager;
-import net.pistonmaster.serverwrecker.protocol.bot.model.EffectData;
-import net.pistonmaster.serverwrecker.protocol.bot.state.EntityEffectState;
+import net.pistonmaster.soulfire.pluginexample.ExampleServerExtension;
+import net.pistonmaster.soulfire.server.protocol.ExecutorManager;
+import net.pistonmaster.soulfire.server.protocol.bot.model.EffectData;
+import net.pistonmaster.soulfire.server.protocol.bot.state.EntityEffectState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

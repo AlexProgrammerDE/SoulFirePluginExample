@@ -1,7 +1,7 @@
 /*
- * ServerWrecker
+ * SoulFire
  *
- * Copyright (C) 2023 ServerWrecker
+ * Copyright (C) 2023 SoulFire
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -17,13 +17,17 @@
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
-package net.pistonmaster.serverwrecker.builddata;
+package net.pistonmaster.soulfire.pluginexample;
 
-// The constants are replaced before compilation
-public class BuildData {
+import net.pistonmaster.soulfire.server.api.MixinExtension;
+import org.pf4j.Extension;
 
-    public static final String VERSION = "{{ version }}";
-    public static final String DESCRIPTION = "{{ description }}";
-    public static final String URL = "{{ url }}";
-    public static final String COMMIT = "{{ commit | default("unknown") }}";
+import java.util.Set;
+
+@Extension
+public class ExampleMixinExtension implements MixinExtension {
+    @Override
+    public Set<String> getMixinPaths() {
+        return Set.of("net.pistonmaster.soulfire.pluginexample.mixins.*");
+    }
 }

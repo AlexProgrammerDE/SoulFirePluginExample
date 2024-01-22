@@ -1,7 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
-    id("sw.license-conventions")
+    id("sf.license-conventions")
 }
 
 java.javaTarget(17)
