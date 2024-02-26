@@ -5,7 +5,7 @@ plugins {
 }
 
 allprojects {
-    group = "net.pistonmaster"
+    group = "com.soulfiremc"
     version = "1.0.0-SNAPSHOT"
     description = "Example of how to make a plugin for SoulFire."
 }

@@ -17,23 +17,24 @@
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
-package net.pistonmaster.soulfire.pluginexample;
+package com.soulfiremc.pluginexample;
 
+import com.soulfiremc.server.api.ServerPlugin;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.lenni0451.lambdaevents.EventHandler;
-import net.pistonmaster.soulfire.server.api.ServerExtension;
-import net.pistonmaster.soulfire.server.api.event.lifecycle.SettingsRegistryInitEvent;
-import net.pistonmaster.soulfire.server.settings.lib.SettingsObject;
-import net.pistonmaster.soulfire.server.settings.lib.property.BooleanProperty;
-import net.pistonmaster.soulfire.server.settings.lib.property.IntProperty;
-import net.pistonmaster.soulfire.server.settings.lib.property.Property;
+import com.soulfiremc.server.api.SoulFireAPI;
+import com.soulfiremc.server.api.event.lifecycle.SettingsRegistryInitEvent;
+import com.soulfiremc.server.settings.lib.SettingsObject;
+import com.soulfiremc.server.settings.lib.property.BooleanProperty;
+import com.soulfiremc.server.settings.lib.property.IntProperty;
+import com.soulfiremc.server.settings.lib.property.Property;
 import org.pf4j.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Extension
-public class ExampleServerExtension implements ServerExtension {
+public class ExampleServerExtension implements ServerPlugin {
     private static final Logger LOGGER = LoggerFactory.getLogger(ExampleServerExtension.class);
 
     @EventHandler

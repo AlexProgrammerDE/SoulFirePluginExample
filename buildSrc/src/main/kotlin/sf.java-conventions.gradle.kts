@@ -4,7 +4,11 @@ plugins {
     id("sf.license-conventions")
 }
 
-java.javaTarget(17)
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"

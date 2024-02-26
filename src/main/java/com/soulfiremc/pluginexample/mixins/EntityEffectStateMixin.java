@@ -17,13 +17,13 @@
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
-package net.pistonmaster.soulfire.pluginexample.mixins;
+package com.soulfiremc.pluginexample.mixins;
 
 import com.github.steveice10.mc.protocol.data.game.entity.Effect;
-import net.pistonmaster.soulfire.pluginexample.ExampleServerExtension;
-import net.pistonmaster.soulfire.server.protocol.ExecutorManager;
-import net.pistonmaster.soulfire.server.protocol.bot.model.EffectData;
-import net.pistonmaster.soulfire.server.protocol.bot.state.EntityEffectState;
+import com.soulfiremc.pluginexample.ExampleServerExtension;
+import com.soulfiremc.server.protocol.ExecutorManager;
+import com.soulfiremc.server.protocol.bot.model.EffectData;
+import com.soulfiremc.server.protocol.bot.state.EntityEffectState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

@@ -17,9 +17,9 @@
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  */
-package net.pistonmaster.soulfire.pluginexample;
+package com.soulfiremc.pluginexample;
 
-import net.pistonmaster.soulfire.server.api.MixinExtension;
+import com.soulfiremc.server.api.MixinExtension;
 import org.pf4j.Extension;
 
 import java.util.Set;
@@ -28,6 +28,6 @@ import java.util.Set;
 public class ExampleMixinExtension implements MixinExtension {
     @Override
     public Set<String> getMixinPaths() {
-        return Set.of("net.pistonmaster.soulfire.pluginexample.mixins.*");
+        return Set.of("com.soulfiremc.pluginexample.mixins.*");
     }
 }
