@@ -44,7 +44,9 @@ public class EntityEffectStateMixin {
                 botConnection.settingsHolder().get(ExampleServerExtension.HackJumpBoostSettings.JUMP_BOOST_LEVEL),
                 1,
                 false,
-                false
+                false,
+                false,
+                null
             )));
         }
     }
