@@ -19,7 +19,7 @@
  */
 package com.soulfiremc.pluginexample;
 
-import com.soulfiremc.server.api.MixinExtension;
+import com.soulfiremc.api.MixinExtension;
 import org.pf4j.Extension;
 
 import java.util.Set;
