@@ -19,11 +19,11 @@
  */
 package com.soulfiremc.pluginexample.mixins;
 
-import com.github.steveice10.mc.protocol.data.game.entity.Effect;
 import com.soulfiremc.pluginexample.ExampleServerExtension;
-import com.soulfiremc.server.protocol.ExecutorManager;
+import com.soulfiremc.server.protocol.BotConnection;
 import com.soulfiremc.server.protocol.bot.model.EffectData;
 import com.soulfiremc.server.protocol.bot.state.EntityEffectState;
+import org.geysermc.mcprotocollib.protocol.data.game.entity.Effect;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -35,7 +35,7 @@ import java.util.Optional;
 public class EntityEffectStateMixin {
     @Inject(method = "getEffect", at = @At(value = "HEAD"), cancellable = true)
     private void returnJumpBoost(Effect effect, CallbackInfoReturnable<Optional<EffectData>> cir) {
-        var botConnection = ExecutorManager.BOT_CONNECTION_THREAD_LOCAL.get();
+        var botConnection = BotConnection.CURRENT.get();
         if (botConnection != null
             && effect == Effect.JUMP_BOOST
             && botConnection.settingsHolder().get(ExampleServerExtension.HackJumpBoostSettings.HACK_JUMP_BOOST)) {
@@ -46,7 +46,7 @@ public class EntityEffectStateMixin {
                 false,
                 false,
                 false,
-                null
+                false
             )));
         }
     }

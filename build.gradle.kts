@@ -24,8 +24,6 @@ dependencies {
 
 tasks.named<Jar>("jar") {
     manifest {
-        // Plugin attribute is not required, we have an annotation processor for that.
-        // attributes["Plugin-Class"] = ""
         attributes["Plugin-Dependencies"] = ""
         attributes["Plugin-Id"] = "soulfire-example-plugin"
         attributes["Plugin-Provider"] = "Pistonmaster"
