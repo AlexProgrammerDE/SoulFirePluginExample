@@ -28,5 +28,13 @@ tasks.named<Jar>("jar") {
         attributes["Plugin-Id"] = "soulfire-example-plugin"
         attributes["Plugin-Provider"] = "Pistonmaster"
         attributes["Plugin-Version"] = version
+
+        // This is the version of SoulFire that this plugin requires
+        // Update this when you update the version of SoulFire that this plugin requires
+        attributes["Plugin-Requires"] = "1.7.0"
+
+        // If you change the license of this example
+        // Update this to the new license
+        attributes["Plugin-License"] = "MIT"
     }
 }
