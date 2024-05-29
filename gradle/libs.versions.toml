@@ -4,7 +4,7 @@
 
 [libraries]
 soulfire-api = "com.soulfiremc:server:1.8.0"
-pf4j = "org.pf4j:pf4j:3.10.0"
-lombok = "org.projectlombok:lombok:1.18.30"
+pf4j = "org.pf4j:pf4j:3.11.0"
+lombok = "org.projectlombok:lombok:1.18.32"
 
 [bundles]
