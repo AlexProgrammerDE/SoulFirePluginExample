@@ -18,6 +18,7 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        mavenCentral()
         maven("https://repo.opencollab.dev/maven-releases") {
             name = "OpenCollab Releases"
         }
@@ -30,11 +31,8 @@ dependencyResolutionManagement {
         maven("https://repo.viaversion.com/") {
             name = "ViaVersion Repository"
         }
-        maven("https://maven.lenni0451.net/releases") {
+        maven("https://maven.lenni0451.net/everything") {
             name = "Lenni0451"
-        }
-        maven("https://maven.lenni0451.net/snapshots") {
-            name = "Lenni0451 Snapshots"
         }
         maven("https://oss.sonatype.org/content/repositories/snapshots/") {
             name = "Sonatype Repository"
@@ -42,10 +40,12 @@ dependencyResolutionManagement {
         maven("https://jitpack.io/") {
             name = "JitPack Repository"
         }
-        maven("https://repo.codemc.org/repository/maven-public/") {
-            name = "CodeMC Repository"
+        maven("https://repo.spring.io/milestone") {
+            name = "Spring Milestone Repository"
         }
-        mavenCentral()
+        maven("https://repo.spring.io/snapshot") {
+            name = "Spring Snapshot Repository"
+        }
     }
     versionCatalogs {
         create("libs") {
