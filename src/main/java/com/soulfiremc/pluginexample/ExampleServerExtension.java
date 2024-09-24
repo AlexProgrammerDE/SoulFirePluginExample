@@ -20,41 +20,39 @@
 package com.soulfiremc.pluginexample;
 
 import com.soulfiremc.server.SoulFireServer;
-import com.soulfiremc.server.api.ServerPlugin;
+import com.soulfiremc.server.api.ExternalPlugin;
+import com.soulfiremc.server.api.event.lifecycle.InstanceSettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.property.BooleanProperty;
 import com.soulfiremc.server.settings.property.IntProperty;
 import com.soulfiremc.server.settings.property.Property;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.lenni0451.lambdaevents.EventHandler;
-import com.soulfiremc.server.api.event.lifecycle.SettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.lib.SettingsObject;
 import org.pf4j.Extension;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 @Extension
-public class ExampleServerExtension implements ServerPlugin {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExampleServerExtension.class);
-
+public class ExampleServerExtension implements ExternalPlugin {
     @EventHandler
-    public static void onSettingsManagerInit(SettingsRegistryInitEvent event) {
+    public static void onSettingsManagerInit(InstanceSettingsRegistryInitEvent event) {
         event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost");
     }
 
     @Override
-    public void onEnable(SoulFireServer soulFireServer) {
-        LOGGER.info("Plugin is loading!");
+    public void onServer(SoulFireServer soulFireServer) {
+        log.info("Plugin is loading!");
 
         soulFireServer.registerListeners(ExampleServerExtension.class);
 
-        LOGGER.info("Plugin is loaded!");
-        LOGGER.info("Type \"jump\" to see the hacked jump boost!");
+        log.info("Plugin is loaded!");
+        log.info("Type \"jump\" to see the hacked jump boost!");
     }
 
     @NoArgsConstructor(access = AccessLevel.NONE)
     public static class HackJumpBoostSettings implements SettingsObject {
-        private static final Property.Builder BUILDER = Property.builder("plugin-example-hack-jump-boost");
+        private static final Property.Builder BUILDER = Property.builder("hack-jump-boost");
         public static final BooleanProperty HACK_JUMP_BOOST = BUILDER.ofBoolean(
             "hack-jump-boost",
             "Hack Jump Boost?",
