@@ -19,6 +19,7 @@
  */
 package com.soulfiremc.pluginexample;
 
+import com.soulfiremc.server.SoulFireServer;
 import com.soulfiremc.server.api.ServerPlugin;
 import com.soulfiremc.server.settings.property.BooleanProperty;
 import com.soulfiremc.server.settings.property.IntProperty;
@@ -26,7 +27,6 @@ import com.soulfiremc.server.settings.property.Property;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.lenni0451.lambdaevents.EventHandler;
-import com.soulfiremc.server.api.SoulFireAPI;
 import com.soulfiremc.server.api.event.lifecycle.SettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.lib.SettingsObject;
 import org.pf4j.Extension;
@@ -43,10 +43,10 @@ public class ExampleServerExtension implements ServerPlugin {
     }
 
     @Override
-    public void onLoad() {
+    public void onEnable(SoulFireServer soulFireServer) {
         LOGGER.info("Plugin is loading!");
 
-        SoulFireAPI.registerListeners(ExampleServerExtension.class);
+        soulFireServer.registerListeners(ExampleServerExtension.class);
 
         LOGGER.info("Plugin is loaded!");
         LOGGER.info("Type \"jump\" to see the hacked jump boost!");
@@ -58,14 +58,12 @@ public class ExampleServerExtension implements ServerPlugin {
         public static final BooleanProperty HACK_JUMP_BOOST = BUILDER.ofBoolean(
             "hack-jump-boost",
             "Hack Jump Boost?",
-            new String[]{"--hack-jump-boost"},
             "Hack Jump Boost?",
             true
         );
         public static final IntProperty JUMP_BOOST_LEVEL = BUILDER.ofInt(
             "jump-boost-level",
             "Jump Boost Level",
-            new String[]{"--jump-boost-level"},
             "Jump Boost Level",
             2,
             0,

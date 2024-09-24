@@ -31,7 +31,7 @@ tasks.named<Jar>("jar") {
 
         // This is the version of SoulFire that this plugin requires
         // Update this when you update the version of SoulFire that this plugin requires
-        attributes["Plugin-Requires"] = "1.7.0"
+        attributes["Plugin-Requires"] = "1.12.2"
 
         // If you change the license of this example
         // Update this to the new license
