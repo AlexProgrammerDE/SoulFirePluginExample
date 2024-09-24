@@ -19,6 +19,9 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
+        maven("https://repo.codemc.org/repository/maven-public/") {
+            name = "CodeMC Repository"
+        }
         maven("https://repo.opencollab.dev/maven-releases") {
             name = "OpenCollab Releases"
         }
