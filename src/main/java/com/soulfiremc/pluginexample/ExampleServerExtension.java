@@ -37,7 +37,7 @@ import org.pf4j.Extension;
 public class ExampleServerExtension implements ExternalPlugin {
     @EventHandler
     public static void onSettingsManagerInit(InstanceSettingsRegistryInitEvent event) {
-        event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost");
+        event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost", "rabbit");
     }
 
     @Override
