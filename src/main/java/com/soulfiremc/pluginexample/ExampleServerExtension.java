@@ -28,23 +28,18 @@ import com.soulfiremc.server.settings.property.Property;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.lenni0451.lambdaevents.EventHandler;
 import com.soulfiremc.server.settings.lib.SettingsObject;
 import org.pf4j.Extension;
 
 @Slf4j
 @Extension
 public class ExampleServerExtension implements ExternalPlugin {
-    @EventHandler
-    public static void onSettingsManagerInit(InstanceSettingsRegistryInitEvent event) {
-        event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost", "rabbit");
-    }
-
     @Override
     public void onServer(SoulFireServer soulFireServer) {
         log.info("Plugin is loading!");
 
-        soulFireServer.registerListeners(ExampleServerExtension.class);
+        soulFireServer.registerListener(InstanceSettingsRegistryInitEvent.class, event ->
+            event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost", pluginInfo(), "rabbit"));
 
         log.info("Plugin is loaded!");
         log.info("Type \"jump\" to see the hacked jump boost!");
