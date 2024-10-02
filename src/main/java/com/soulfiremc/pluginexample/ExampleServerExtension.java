@@ -51,13 +51,13 @@ public class ExampleServerExtension implements ExternalPlugin {
         public static final BooleanProperty HACK_JUMP_BOOST = BUILDER.ofBoolean(
             "hack-jump-boost",
             "Hack Jump Boost?",
-            "Hack Jump Boost?",
+            "Should we hack to add fake jump boost?",
             true
         );
         public static final IntProperty JUMP_BOOST_LEVEL = BUILDER.ofInt(
             "jump-boost-level",
             "Jump Boost Level",
-            "Jump Boost Level",
+            "The level of jump boost",
             2,
             0,
             255,
