@@ -14,7 +14,7 @@ dependencies {
     // To use the SoulFire API
     compileOnly(libs.soulfire.api)
 
-    // To get pf4j to find all available extensions
+    // IMPORTANT: So that your plugin can be loaded by SoulFire
     annotationProcessor(libs.pf4j)
 
     // For code generation
