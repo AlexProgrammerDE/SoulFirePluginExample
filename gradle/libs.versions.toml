@@ -3,8 +3,8 @@
 [plugins]
 
 [libraries]
-soulfire-api = "com.soulfiremc:server:1.13.1"
-pf4j = "org.pf4j:pf4j:3.12.0"
+soulfire-api = "com.soulfiremc:server:1.14.0"
+pf4j = "org.pf4j:pf4j:3.12.1"
 lombok = "org.projectlombok:lombok:1.18.34"
 
 [bundles]
