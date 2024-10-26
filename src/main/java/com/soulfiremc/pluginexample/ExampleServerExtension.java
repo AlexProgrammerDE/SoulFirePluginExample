@@ -48,9 +48,9 @@ public class ExampleServerExtension implements ExternalPlugin {
     @NoArgsConstructor(access = AccessLevel.NONE)
     public static class HackJumpBoostSettings implements SettingsObject {
         private static final Property.Builder BUILDER = Property.builder("hack-jump-boost");
-        public static final BooleanProperty HACK_JUMP_BOOST = BUILDER.ofBoolean(
-            "hack-jump-boost",
-            "Hack Jump Boost?",
+        public static final BooleanProperty ENABLED = BUILDER.ofBoolean(
+            "enabled",
+            "Enable Hack Jump Boost",
             "Should we hack to add fake jump boost?",
             true
         );
