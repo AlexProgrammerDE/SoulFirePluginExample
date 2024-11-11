@@ -10,6 +10,7 @@ allprojects {
     description = "Example of how to make a plugin for SoulFire."
 }
 
+// libs are declared in gradle/libs.versions.toml
 dependencies {
     // To use the SoulFire API
     compileOnly(libs.soulfire.api)
@@ -31,7 +32,7 @@ tasks.named<Jar>("jar") {
 
         // This is the version of SoulFire that this plugin requires
         // Update this when you update the version of SoulFire that this plugin requires
-        attributes["Plugin-Requires"] = "1.12.2"
+        attributes["Plugin-Requires"] = "1.15.0"
 
         // If you change the license of this example
         // Update this to the new license

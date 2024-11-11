@@ -19,7 +19,6 @@
  */
 package com.soulfiremc.pluginexample;
 
-import com.soulfiremc.server.SoulFireServer;
 import com.soulfiremc.server.api.ExternalPlugin;
 import com.soulfiremc.server.api.event.lifecycle.InstanceSettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.property.BooleanProperty;
@@ -29,20 +28,20 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.soulfiremc.server.settings.lib.SettingsObject;
+import net.lenni0451.lambdaevents.EventHandler;
 import org.pf4j.Extension;
 
 @Slf4j
 @Extension
-public class ExampleServerExtension implements ExternalPlugin {
-    @Override
-    public void onServer(SoulFireServer soulFireServer) {
-        log.info("Plugin is loading!");
+public class ExampleServerExtension extends ExternalPlugin {
+    protected ExampleServerExtension() {
+        super(ExampleServerExtension.class);
+    }
 
-        soulFireServer.registerListener(InstanceSettingsRegistryInitEvent.class, event ->
-            event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost", pluginInfo(), "rabbit"));
-
-        log.info("Plugin is loaded!");
-        log.info("Type \"jump\" to see the hacked jump boost!");
+    @EventHandler
+    public void onSettingsRegistryInit(InstanceSettingsRegistryInitEvent event) {
+        event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost", this, "rabbit");
+        log.info("Run \"jump\" to see the hacked jump boost!");
     }
 
     @NoArgsConstructor(access = AccessLevel.NONE)
