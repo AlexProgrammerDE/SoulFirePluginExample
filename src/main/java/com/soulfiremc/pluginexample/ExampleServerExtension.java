@@ -21,23 +21,20 @@ package com.soulfiremc.pluginexample;
 
 import com.soulfiremc.server.api.ExternalPlugin;
 import com.soulfiremc.server.api.event.lifecycle.InstanceSettingsRegistryInitEvent;
+import com.soulfiremc.server.settings.lib.SettingsObject;
 import com.soulfiremc.server.settings.property.BooleanProperty;
+import com.soulfiremc.server.settings.property.ImmutableBooleanProperty;
+import com.soulfiremc.server.settings.property.ImmutableIntProperty;
 import com.soulfiremc.server.settings.property.IntProperty;
-import com.soulfiremc.server.settings.property.Property;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.soulfiremc.server.settings.lib.SettingsObject;
 import net.lenni0451.lambdaevents.EventHandler;
 import org.pf4j.Extension;
 
 @Slf4j
 @Extension
 public class ExampleServerExtension extends ExternalPlugin {
-    protected ExampleServerExtension() {
-        super(ExampleServerExtension.class);
-    }
-
     @EventHandler
     public void onSettingsRegistryInit(InstanceSettingsRegistryInitEvent event) {
         event.settingsRegistry().addClass(HackJumpBoostSettings.class, "Hack Jump Boost", this, "rabbit");
@@ -46,21 +43,23 @@ public class ExampleServerExtension extends ExternalPlugin {
 
     @NoArgsConstructor(access = AccessLevel.NONE)
     public static class HackJumpBoostSettings implements SettingsObject {
-        private static final Property.Builder BUILDER = Property.builder("hack-jump-boost");
-        public static final BooleanProperty ENABLED = BUILDER.ofBoolean(
-            "enabled",
-            "Enable Hack Jump Boost",
-            "Should we hack to add fake jump boost?",
-            true
-        );
-        public static final IntProperty JUMP_BOOST_LEVEL = BUILDER.ofInt(
-            "jump-boost-level",
-            "Jump Boost Level",
-            "The level of jump boost",
-            2,
-            0,
-            255,
-            1
-        );
+        private static final String NAMESPACE = "hack-jump-boost";
+        public static final BooleanProperty ENABLED = ImmutableBooleanProperty.builder()
+            .namespace(NAMESPACE)
+            .key("enabled")
+            .uiName("Enable Hack Jump Boost")
+            .description("Should we hack to add fake jump boost?")
+            .defaultValue(true)
+            .build();
+        public static final IntProperty JUMP_BOOST_LEVEL = ImmutableIntProperty.builder()
+            .namespace(NAMESPACE)
+            .key("jump-boost-level")
+            .uiName("Jump Boost Level")
+            .description("The level of jump boost")
+            .defaultValue(2)
+            .minValue(0)
+            .maxValue(255)
+            .stepValue(1)
+            .build();
     }
 }
