@@ -37,5 +37,8 @@ tasks.named<Jar>("jar") {
         // If you change the license of this example
         // Update this to the new license
         attributes["Plugin-License"] = "MIT"
+
+        // Change this to the website of your plugin
+        attributes["Plugin-Website"] = "https://github.com/AlexProgrammerDE/SoulFirePluginExample"
     }
 }
