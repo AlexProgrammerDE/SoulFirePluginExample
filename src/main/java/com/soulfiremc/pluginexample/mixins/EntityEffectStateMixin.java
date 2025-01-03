@@ -20,34 +20,27 @@
 package com.soulfiremc.pluginexample.mixins;
 
 import com.soulfiremc.pluginexample.ExampleServerExtension;
-import com.soulfiremc.server.protocol.BotConnection;
-import com.soulfiremc.server.protocol.bot.model.EffectData;
-import com.soulfiremc.server.protocol.bot.state.EntityEffectState;
-import org.geysermc.mcprotocollib.protocol.data.game.entity.Effect;
+import com.soulfiremc.server.data.EffectType;
+import com.soulfiremc.server.protocol.bot.state.entity.LocalPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Optional;
-
-@Mixin(EntityEffectState.class)
+@Mixin(LocalPlayer.class)
 public class EntityEffectStateMixin {
-    @Inject(method = "getEffect", at = @At(value = "HEAD"), cancellable = true)
-    private void returnJumpBoost(Effect effect, CallbackInfoReturnable<Optional<EffectData>> cir) {
-        var botConnection = BotConnection.CURRENT.get();
-        if (botConnection != null
-            && effect == Effect.JUMP_BOOST
-            && botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.ENABLED)) {
-            cir.setReturnValue(Optional.of(new EffectData(
-                effect,
+    @Inject(method = "tick", at = @At(value = "HEAD"))
+    private void localPlayerTick() {
+        var localPlayer = (LocalPlayer) (Object) this;
+        var botConnection = localPlayer.connection();
+        if (botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.ENABLED)) {
+            localPlayer.effectState().updateEffect(
+                EffectType.JUMP,
                 botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.JUMP_BOOST_LEVEL),
                 1,
                 false,
                 false,
                 false,
-                false
-            )));
+                false);
         }
     }
 }
