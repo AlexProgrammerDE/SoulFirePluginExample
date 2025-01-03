@@ -36,7 +36,7 @@ public class EntityEffectStateMixin {
             localPlayer.effectState().updateEffect(
                 EffectType.JUMP,
                 botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.JUMP_BOOST_LEVEL),
-                1,
+                20,
                 false,
                 false,
                 false,
