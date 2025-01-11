@@ -30,6 +30,9 @@ tasks.named<Jar>("jar") {
         attributes["Plugin-Provider"] = "Pistonmaster"
         attributes["Plugin-Version"] = version
 
+        // Change this to the description of your plugin
+        attributes["Plugin-Description"] = "Example of how to make a plugin for SoulFire."
+
         // This is the version of SoulFire that this plugin requires
         // Update this when you update the version of SoulFire that this plugin requires
         attributes["Plugin-Requires"] = "1.16.0"
