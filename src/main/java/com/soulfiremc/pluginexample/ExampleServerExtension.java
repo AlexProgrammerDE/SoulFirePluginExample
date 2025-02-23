@@ -59,7 +59,6 @@ public class ExampleServerExtension extends ExternalPlugin {
             .defaultValue(2)
             .minValue(0)
             .maxValue(255)
-            .stepValue(1)
             .build();
     }
 }
