@@ -5,6 +5,6 @@
 [libraries]
 soulfire-api = "com.soulfiremc:server:1.20.5"
 pf4j = "org.pf4j:pf4j:3.13.0"
-lombok = "org.projectlombok:lombok:1.18.40"
+lombok = "org.projectlombok:lombok:1.18.42"
 
 [bundles]
