@@ -8,6 +8,6 @@ repositories {
 }
 
 dependencies {
-    implementation("gradle.plugin.com.github.johnrengelman:shadow:8.0.0")
-    implementation("gradle.plugin.org.cadixdev.gradle:licenser:0.6.1")
+    implementation("com.gradleup.shadow:com.gradleup.shadow.gradle.plugin:9.2.2")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:8.0.0")
 }

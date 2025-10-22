@@ -1,6 +1,17 @@
 plugins {
-    id("org.cadixdev.licenser")
+    id("com.diffplug.spotless")
 }
 
-license.header(rootProject.file("file_header.txt"))
-license.newLine(false)
+spotless {
+    java {
+        target("**/com/soulfiremc/**")
+
+        trimTrailingWhitespace()
+        leadingTabsToSpaces(2)
+        endWithNewline()
+
+        importOrder("", "javax|java", "\\#")
+
+        licenseHeaderFile(rootProject.file("file_header.txt"))
+    }
+}
