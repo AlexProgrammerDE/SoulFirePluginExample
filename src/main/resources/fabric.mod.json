@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "soulfire-plugin-example",
+  "version": "${version}",
+  "name": "SoulFirePluginExample",
+  "description": "${description}",
+  "authors": [
+    "Pistonmaster"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.soulfiremc.pluginexample.Main"
+    ]
+  },
+  "mixins": [
+    "soulfire-plugin-example.mixins.json"
+  ],
+  "accessWidener": "soulfire-plugin-example.accesswidener",
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*"
+  }
+}
