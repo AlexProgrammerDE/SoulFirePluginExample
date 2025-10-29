@@ -18,27 +18,27 @@
 package com.soulfiremc.pluginexample.mixin;
 
 import com.soulfiremc.pluginexample.ExampleServerExtension;
-import com.soulfiremc.server.data.EffectType;
-import com.soulfiremc.server.protocol.bot.state.entity.LocalPlayer;
+import com.soulfiremc.server.bot.BotConnection;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LocalPlayer.class)
 public class EntityEffectStateMixin {
     @Inject(method = "tick", at = @At(value = "HEAD"))
-    private void localPlayerTick() {
+    private void localPlayerTick(CallbackInfo ci) {
         var localPlayer = (LocalPlayer) (Object) this;
-        var botConnection = localPlayer.connection();
+        var botConnection = BotConnection.CURRENT.get();
         if (botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.ENABLED)) {
-            localPlayer.effectState().updateEffect(
-                EffectType.JUMP,
-                botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.JUMP_BOOST_LEVEL),
+            localPlayer.addEffect(new MobEffectInstance(
+                MobEffects.JUMP_BOOST,
                 20,
-                false,
-                false,
-                false,
-                false);
+                botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.JUMP_BOOST_LEVEL)
+            ));
         }
     }
 }

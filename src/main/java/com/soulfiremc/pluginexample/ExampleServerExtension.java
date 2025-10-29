@@ -18,6 +18,7 @@
 package com.soulfiremc.pluginexample;
 
 import com.soulfiremc.server.api.ExternalPlugin;
+import com.soulfiremc.server.api.PluginInfo;
 import com.soulfiremc.server.api.event.lifecycle.InstanceSettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.lib.SettingsObject;
 import com.soulfiremc.server.settings.property.BooleanProperty;
@@ -28,11 +29,20 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.lenni0451.lambdaevents.EventHandler;
-import org.pf4j.Extension;
 
 @Slf4j
-@Extension
 public class ExampleServerExtension extends ExternalPlugin {
+    protected ExampleServerExtension() {
+        super(new PluginInfo(
+            "soulfire-plugin-example",
+            "SoulFire Plugin Example",
+            "An example plugin for SoulFire Server",
+            "AlexProgrammerDE",
+            "1.0.0",
+            "https://soulfiremc.com"
+        ));
+    }
+
     @EventHandler
     public void onSettingsRegistryInit(InstanceSettingsRegistryInitEvent event) {
         event.settingsRegistry().addPluginPage(HackJumpBoostSettings.class, "Hack Jump Boost", this, "rabbit", HackJumpBoostSettings.ENABLED);

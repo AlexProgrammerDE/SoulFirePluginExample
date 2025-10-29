@@ -21,6 +21,7 @@
   "accessWidener": "soulfire-plugin-example.accesswidener",
   "depends": {
     "fabricloader": "*",
-    "minecraft": "*"
+    "minecraft": "*",
+    "soulfire": "*"
   }
 }
