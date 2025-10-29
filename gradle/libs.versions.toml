@@ -3,7 +3,7 @@
 [plugins]
 
 [libraries]
-soulfire-api = "com.soulfiremc:launcher:2.1.0"
+soulfire-mod = "com.soulfiremc:mod:2.1.1-SNAPSHOT"
 lombok = "org.projectlombok:lombok:1.18.42"
 
 [bundles]

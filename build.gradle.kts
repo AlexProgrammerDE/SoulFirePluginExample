@@ -86,10 +86,12 @@ allprojects {
     }
 }
 
+val modImplementation: Configuration by configurations.creating
+
 // libs are declared in gradle/libs.versions.toml
 dependencies {
     // To use the SoulFire API
-    compileOnly(libs.soulfire.api)
+    modImplementation(libs.soulfire.mod)
 
     // For code generation
     compileOnly(libs.lombok)
