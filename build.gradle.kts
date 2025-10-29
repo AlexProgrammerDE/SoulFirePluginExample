@@ -92,6 +92,7 @@ val modImplementation: Configuration by configurations.creating
 dependencies {
     // To use the SoulFire API
     modImplementation(libs.soulfire.mod)
+    compileOnly(libs.soulfire.shared)
 
     // For code generation
     compileOnly(libs.lombok)

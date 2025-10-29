@@ -4,6 +4,7 @@
 
 [libraries]
 soulfire-mod = "com.soulfiremc:mod:2.1.1-SNAPSHOT"
+soulfire-shared = "com.soulfiremc:shared :2.1.1-SNAPSHOT"
 lombok = "org.projectlombok:lombok:1.18.42"
 
 [bundles]

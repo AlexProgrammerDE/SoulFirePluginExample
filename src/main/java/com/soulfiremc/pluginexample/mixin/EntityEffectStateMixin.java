@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.soulfiremc.pluginexample.mixins;
+package com.soulfiremc.pluginexample.mixin;
 
 import com.soulfiremc.pluginexample.ExampleServerExtension;
 import com.soulfiremc.server.data.EffectType;
