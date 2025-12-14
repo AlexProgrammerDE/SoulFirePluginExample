@@ -1,7 +1,7 @@
 plugins {
     id("sf.java-conventions")
     idea
-    id("xyz.wagyourtail.unimined")
+    id("fabric-loom")
 }
 
 allprojects {
@@ -40,7 +40,7 @@ allprojects {
         maven("https://maven.parchmentmc.org") {
             name = "ParchmentMC"
             content {
-                includeGroup("org.parchmentmc")
+                includeGroup("org.parchmentmc.data")
             }
         }
         maven("https://maven.fabricmc.net") {
@@ -86,44 +86,29 @@ allprojects {
     }
 }
 
-val modImplementation: Configuration by configurations.creating
+loom {
+    accessWidenerPath = file("src/main/resources/soulfire-plugin-example.accesswidener")
+
+    // Disable run configurations as this is a plugin, not a standalone mod
+    runs {
+        removeIf { true }
+    }
+}
 
 // libs are declared in gradle/libs.versions.toml
 dependencies {
-    // To use the SoulFire API
+    minecraft(libs.minecraft)
+    @Suppress("UnstableApiUsage")
+    mappings(loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${libs.versions.parchmentMc.get()}:${libs.versions.parchment.get()}@zip")
+    })
+    modImplementation(libs.fabric.loader)
+
     modImplementation(libs.soulfire.mod)
     compileOnly(libs.soulfire.shared)
 
     // For code generation
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
-}
-
-unimined.minecraft {
-    version("1.21.10")
-
-    mappings {
-        intermediary()
-        mojmap()
-        parchment("1.21.10", "2025.10.12")
-    }
-
-    fabric {
-        loader("0.17.2")
-        accessWidener(project.projectDir.resolve("src/main/resources/soulfire-plugin-example.accesswidener"))
-    }
-
-    mods {
-        modImplementation {
-            mixinRemap {
-                @Suppress("UnstableApiUsage")
-                reset()
-                enableBaseMixin()
-                enableMixinExtra()
-            }
-        }
-    }
-
-    defaultRemapJar = true
-    runs.off = true
 }
