@@ -1,7 +1,7 @@
 plugins {
     id("sf.java-conventions")
     idea
-    id("fabric-loom")
+    id("net.fabricmc.fabric-loom")
 }
 
 allprojects {
@@ -98,14 +98,9 @@ loom {
 // libs are declared in gradle/libs.versions.toml
 dependencies {
     minecraft(libs.minecraft)
-    @Suppress("UnstableApiUsage")
-    mappings(loom.layered {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${libs.versions.parchmentMc.get()}:${libs.versions.parchment.get()}@zip")
-    })
-    modImplementation(libs.fabric.loader)
+    implementation(libs.fabric.loader)
 
-    modImplementation(libs.soulfire.mod)
+    implementation(libs.soulfire.mod)
     compileOnly(libs.soulfire.shared)
 
     // For code generation

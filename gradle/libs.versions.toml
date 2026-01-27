@@ -1,16 +1,15 @@
 [versions]
-minecraft = "1.21.10"
+minecraft = "1.21.11_unobfuscated"
 fabric-loader = "0.17.2"
-parchment = "2025.03.23"
-parchmentMc = "1.21.4"
+soulfire = "2.3.0"
 
 [plugins]
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
-soulfire-mod = "com.soulfiremc:mod:2.1.1-SNAPSHOT"
-soulfire-shared = "com.soulfiremc:shared:2.1.1-SNAPSHOT"
+soulfire-mod = {module = "com.soulfiremc:mod", version.ref = "soulfire" }
+soulfire-shared = {module = "com.soulfiremc:shared", version.ref = "soulfire" }
 lombok = "org.projectlombok:lombok:1.18.42"
 
 [bundles]

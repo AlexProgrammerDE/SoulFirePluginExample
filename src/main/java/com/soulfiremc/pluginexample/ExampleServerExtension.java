@@ -21,6 +21,7 @@ import com.soulfiremc.server.api.ExternalPlugin;
 import com.soulfiremc.server.api.PluginInfo;
 import com.soulfiremc.server.api.event.lifecycle.InstanceSettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.lib.SettingsObject;
+import com.soulfiremc.server.settings.lib.SettingsSource;
 import com.soulfiremc.server.settings.property.BooleanProperty;
 import com.soulfiremc.server.settings.property.ImmutableBooleanProperty;
 import com.soulfiremc.server.settings.property.ImmutableIntProperty;
@@ -45,21 +46,23 @@ public class ExampleServerExtension extends ExternalPlugin {
 
     @EventHandler
     public void onSettingsRegistryInit(InstanceSettingsRegistryInitEvent event) {
-        event.settingsRegistry().addPluginPage(HackJumpBoostSettings.class, "Hack Jump Boost", this, "rabbit", HackJumpBoostSettings.ENABLED);
+        event.settingsPageRegistry().addPluginPage(HackJumpBoostSettings.class, "hack-jump-boost", "Hack Jump Boost", this, "rabbit", HackJumpBoostSettings.ENABLED);
         log.info("Run \"jump\" to see the hacked jump boost!");
     }
 
     @NoArgsConstructor(access = AccessLevel.NONE)
     public static class HackJumpBoostSettings implements SettingsObject {
         private static final String NAMESPACE = "hack-jump-boost";
-        public static final BooleanProperty ENABLED = ImmutableBooleanProperty.builder()
+        public static final BooleanProperty<SettingsSource.Bot> ENABLED = ImmutableBooleanProperty.<SettingsSource.Bot>builder()
+            .sourceType(SettingsSource.Bot.INSTANCE)
             .namespace(NAMESPACE)
             .key("enabled")
             .uiName("Enable Hack Jump Boost")
             .description("Should we hack to add fake jump boost?")
             .defaultValue(true)
             .build();
-        public static final IntProperty JUMP_BOOST_LEVEL = ImmutableIntProperty.builder()
+        public static final IntProperty<SettingsSource.Bot> JUMP_BOOST_LEVEL = ImmutableIntProperty.<SettingsSource.Bot>builder()
+            .sourceType(SettingsSource.Bot.INSTANCE)
             .namespace(NAMESPACE)
             .key("jump-boost-level")
             .uiName("Jump Boost Level")
