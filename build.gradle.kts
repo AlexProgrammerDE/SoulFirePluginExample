@@ -1,7 +1,12 @@
 plugins {
+    base
     id("sf.java-conventions")
     idea
     id("net.fabricmc.fabric-loom")
+}
+
+tasks.named<UpdateDaemonJvm>("updateDaemonJvm") {
+    languageVersion = JavaLanguageVersion.of(25)
 }
 
 allprojects {
