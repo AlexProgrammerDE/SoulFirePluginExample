@@ -16,7 +16,7 @@ dependencies {
     implementation("org.ow2.asm:asm:9.9.1")
     implementation("com.github.spotbugs.snom:spotbugs-gradle-plugin:6.4.8")
     implementation("net.ltgt.errorprone:net.ltgt.errorprone.gradle.plugin:5.0.0")
-    implementation("org.openrewrite:plugin:7.25.0")
+    implementation("org.openrewrite:plugin:7.26.0")
     implementation("net.kyori:indra-git:4.0.0")
 }
 
