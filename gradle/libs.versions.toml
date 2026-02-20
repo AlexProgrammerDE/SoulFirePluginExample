@@ -1,7 +1,7 @@
 [versions]
 minecraft = "1.21.11_unobfuscated"
 fabric-loader = "0.18.4"
-soulfire = "2.4.4"
+soulfire = "2.5.0"
 
 [plugins]
 
