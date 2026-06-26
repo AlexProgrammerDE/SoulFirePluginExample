@@ -32,7 +32,7 @@ public class EntityEffectStateMixin {
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void localPlayerTick(CallbackInfo ci) {
         var localPlayer = (LocalPlayer) (Object) this;
-        var botConnection = BotConnection.CURRENT.get();
+        var botConnection = BotConnection.current();
         if (botConnection.settingsSource().get(ExampleServerExtension.HackJumpBoostSettings.ENABLED)) {
             localPlayer.addEffect(new MobEffectInstance(
                 MobEffects.JUMP_BOOST,

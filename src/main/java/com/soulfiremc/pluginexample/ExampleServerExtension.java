@@ -19,6 +19,7 @@ package com.soulfiremc.pluginexample;
 
 import com.soulfiremc.server.api.ExternalPlugin;
 import com.soulfiremc.server.api.PluginInfo;
+import com.soulfiremc.server.api.event.bot.ChatMessageReceiveEvent;
 import com.soulfiremc.server.api.event.lifecycle.InstanceSettingsRegistryInitEvent;
 import com.soulfiremc.server.settings.lib.SettingsObject;
 import com.soulfiremc.server.settings.lib.SettingsSource;
@@ -48,6 +49,17 @@ public class ExampleServerExtension extends ExternalPlugin {
     public void onSettingsRegistryInit(InstanceSettingsRegistryInitEvent event) {
         event.settingsPageRegistry().addPluginPage(HackJumpBoostSettings.class, "hack-jump-boost", "Hack Jump Boost", this, "rabbit", HackJumpBoostSettings.ENABLED);
         log.info("Run \"jump\" to see the hacked jump boost!");
+    }
+
+    /// Reference usage of the plugin runtime stats API: count chat messages each
+    /// bot observes and expose it as a live counter on the instance overview.
+    @EventHandler
+    public void onChatMessage(ChatMessageReceiveEvent event) {
+        var connection = event.connection();
+        var stats = connection.instanceManager().pluginStats().forPlugin(pluginInfo());
+        stats.trackBot(connection.accountProfileId());
+        stats.counter("chat_messages_seen", "Chat messages seen", "messages", "minecraft:writable_book")
+            .increment();
     }
 
     @NoArgsConstructor(access = AccessLevel.NONE)

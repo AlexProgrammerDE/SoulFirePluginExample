@@ -14,6 +14,7 @@ allprojects {
     version = "1.0.0-SNAPSHOT"
     description = "Example of how to make a plugin for SoulFire."
     repositories {
+        mavenLocal()
         maven("https://repo.viaversion.com") {
             name = "ViaVersion Repository"
             content {
@@ -83,6 +84,13 @@ allprojects {
         }
         maven("https://repo.codemc.org/repository/maven-public/") {
             name = "CodeMC Repository"
+            content {
+                includeGroup("com.soulfiremc")
+            }
+        }
+        maven("https://repo.codemc.org/repository/maven-snapshots/") {
+            name = "CodeMC Snapshot Repository"
+            mavenContent { snapshotsOnly() }
             content {
                 includeGroup("com.soulfiremc")
             }
